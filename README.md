@@ -1,1 +1,67 @@
 # OOP.Assignement2
+
+## Part one  
+
+In this assignment, you create several text files calculate the number of lines in these files. We will use three methods:
+• Normal method without the use of threads,
+• use of threads,
+• Using ThreadPool 
+
+In this part there is a class called 1_Ex2 and in it are written 4 functions:
+
+### Function 1 - Create Text Files
+Input:
+n - a natural number representing the number of text files.
+The file names will read like this:
+.file_1, file_2 , …, file_n.
+The number of lines in each file is a random number, obtained with the help of a usage class
+In this class and in the seed and bound parameters.
+Output: The function creates n text files on disk and returns an array
+of the file names. Each line in the file contains at least 10 characters. 
+
+Within each call of the methods over our file, we are measuring the elapsed time for each action.
+
+### Function2 - getNumOfLines
+Input: an array that contains the file names.
+Output: total number of lines of the files.
+In this function we used in Scanner class in nextLine() method, which is used to read Strings.
+
+### Function 3 - getNumOfLinesThreads
+Input: an array that contains the file names.
+Output: total number of lines of the files.
+In this function we used the CountLine class that we wrote. This class extends from the thread class.
+In class that we wrote that call CountLine we have the run method that calculating total number of lines of the file. 
+The function creates a new CountLine, with each of the file name ,activating it's run method by start(), and join each of the threads to get total line count sum of all files.
+
+### Function 4 - getNumOfLinesThreadPool
+Input: an array that contains the file names.
+Output: total number of lines of the files.
+In this function we used the CountLineCollable class that we wrote. This class implements from the Callable interface that similar to Runnable but a Callable interface that basically throws a checked exception and returns some results. This is one of the major differences between the upcoming Runnable interface where no value is being returned. In this interface, it simply computes a result else throws an exception if unable to do so..
+The Callable interface is a generic interface containing a single call() method that returns a generic value.
+The call() method method that calculating total number of lines of the file.
+In our function getNumOfLinesThreadPool we are create thread pool with a number of threads equal to the number of files and Array list from Future objects,that represents the result of an asynchronous computation. When the asynchronous task is created, a Java Future object is returned. This Future object functions as a handle to the result of the asynchronous task. Once the asynchronous task completes, the result can be accessed via the Future object returned when the task was started. returned by the thread pool. It iterates over the list of file names and creates a CountLineCollable Callable object for each file name. Later on submits the Callable object to the thread pool and add the returned Future object in the list.
+After we are iterates over the list of Future objects and retrieves the result of each Future object by call the get() method ,each result we add to the counter and
+to finish the thread pool is shut down. 
+
+### Function 5 - deleteAllFiles
+In this function ew are deleting all the files that we are creating after we are running all the functions.
+
+### Class diagram
+
+<img src="https://user-images.githubusercontent.com/118892976/211175235-b3aa66cd-8c08-4127-bb9b-84f8a060106f.png" alt="drawing" width="500"/> 
+
+### Running times of methods 2,3,4 
+
+<img src="https://user-images.githubusercontent.com/118892976/211204988-6c769938-3713-40b2-8df2-4d165cabda57.png" alt="drawing" width="500"/>
+
+As we can see, they all counted the same amount of lines, which mean there is no differences between their functionality, as desired. 
+* The "normal" method took total time of 9 minutes and 45 seconds of execution time. 
+* The "Thread" method took total time of 4 minutes and 23 seconds of execution time.
+* And finally, the "ThreadPool" method took total time of 2 minutes and 24 seconds of execution time. 
+
+We see clearly that threads are very efficient when it comes to a long tasks such as reading from files. 
+But more clearly is that the _ThreadPool_ method is the most efficient one of all for such tasks. However, we have encountered a cases where normal _Thread_ method was more efficient, particularly in cases where we worked on a lower number of files. 
+
+to be continue...	:zombie:
+
+ 
