@@ -52,16 +52,15 @@ In this function ew are deleting all the files that we are creating after we are
 
 ### Running times of methods 2,3,4 
 
-<img src="https://user-images.githubusercontent.com/118892976/211204988-6c769938-3713-40b2-8df2-4d165cabda57.png" alt="drawing" width="500"/>
+<img src="https://user-images.githubusercontent.com/118892976/211204988-6c769938-3713-40b2-8df2-4d165cabda57.png" alt="drawing" width="300"/>
 
 As we can see, they all counted the same amount of lines, which mean there is no differences between their functionality, as desired. 
-* The "normal" method took total time of 9 minutes and 45 seconds of execution time. 
-* The "Thread" method took total time of 4 minutes and 23 seconds of execution time.
-* And finally, the "ThreadPool" method took total time of 2 minutes and 24 seconds of execution time. 
+* The method without thread took total time of . 
+* The method with thread took total time of .
+*  The method with thread pool took total time of . 
 
-We see clearly that threads are very efficient when it comes to a long tasks such as reading from files. 
-But more clearly is that the _ThreadPool_ method is the most efficient one of all for such tasks. However, we have encountered a cases where normal _Thread_ method was more efficient, particularly in cases where we worked on a lower number of files. 
 
-to be continue...	:zombie:
+
+
 
  
