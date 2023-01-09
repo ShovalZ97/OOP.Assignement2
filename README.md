@@ -51,17 +51,17 @@ In this function ew are deleting all the files that we are creating after we are
 
 ### Running times of methods 2,3,4
 
-Time for 500 files:
+#### Time for 500 files:
 Without Threads : 110 ms
 Using Threads: 69 ms
 Using ThreadPool: 59 ms
  
-Time for 1000 files:
+#### Time for 1000 files:
 Without Threads : 167 ms
 Using Threads: 109 ms
 Using ThreadPool: 79 ms
  
-Time for 5000 files:
+#### Time for 5000 files:
 Without Threads : 793 ms
 Using Threads: 457 ms
 Using ThreadPool: 454 ms
