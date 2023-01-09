@@ -60,6 +60,10 @@ Create 10000 Files :
 
 <img src="[https://user-images.githubusercontent.com/118892976/211307518-a7169a29-486f-49da-b109-6de9bae7ca72.png]" alt="drawing" width="300"/>
 
+Create 500 Files:
+
+<img src="[https://user-images.githubusercontent.com/118892976/211377005-89dfec58-3443-4814-b3df-063548d89eb7.png]" alt="drawing" width="300"/>
+
 
 
 As we can see, they all counted the same amount of lines, which mean there is no differences between their functionality, as desired. 
