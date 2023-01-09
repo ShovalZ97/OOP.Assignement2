@@ -7,6 +7,7 @@ In this assignment, you create several text files calculate the number of lines 
 • use of threads,
 • Using ThreadPool 
 
+Within each call of the methods over our file, we are measuring the elapsed time for each action.
 In this part there is a class called 1_Ex2 and in it are written 4 functions:
 
 ### Function 1 - Create Text Files
@@ -18,8 +19,6 @@ The number of lines in each file is a random number, obtained with the help of a
 In this class and in the seed and bound parameters.
 Output: The function creates n text files on disk and returns an array
 of the file names. Each line in the file contains at least 10 characters. 
-
-Within each call of the methods over our file, we are measuring the elapsed time for each action.
 
 ### Function2 - getNumOfLines
 Input: an array that contains the file names.
