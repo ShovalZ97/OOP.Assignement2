@@ -49,25 +49,28 @@ In this function ew are deleting all the files that we are creating after we are
 
 <img src="https://user-images.githubusercontent.com/118892976/211375872-ad68ea9e-dffb-4ada-b337-bb94cf0512b0.png" alt="drawing" width="500"/>
 
-### Running times of methods 2,3,4 
-Create 1000 Files :
+### Running times of methods 2,3,4
 
-<img src="[https://user-images.githubusercontent.com/118892976/211306452-7c382fea-66c2-42eb-9334-32cfa059757f.png]" alt="drawing" width="300"/>
+Time for 500 files:
+Without Threads : 110 ms
+Using Threads: 69 ms
+Using ThreadPool: 59 ms
+ 
+Time for 1000 files:
+Without Threads : 167 ms
+Using Threads: 109 ms
+Using ThreadPool: 79 ms
+ 
+Time for 5000 files:
+Without Threads : 793 ms
+Using Threads: 457 ms
+Using ThreadPool: 454 ms
 
-
-Create 10000 Files :
-
-<img src="[https://user-images.githubusercontent.com/118892976/211307518-a7169a29-486f-49da-b109-6de9bae7ca72.png]" alt="drawing" width="300"/>
-
-Create 500 Files:
-
-<img src="[https://user-images.githubusercontent.com/118892976/211380197-98f6576a-aba1-4c87-9f02-347768348c3e.png]" alt="drawing" width="300"/>
-
-
-As we can see, they all counted the same amount of lines, which mean there is no differences between their functionality, as desired. 
-* The method without thread took total time of . 
-* The method with thread took total time of .
-*  The method with thread pool took total time of . 
+We can notice that the calculation with threadPool is almost always faster than using threads. When we look at the rest of the calculations with 500 files, 1000 files and 5000 files, we can see that the calculations with threadPool are faster than using only one thread.
+There are two reasons why using a threadPool can be faster than using threads:
+The first one, is that we can use the same thread for multiple tasks instead of creating a completely new thread.
+And the second one, is that we use submit() method that accepts a Callable instead of Runnable, so we can get the return value faster with get() 
+ 
 
 
 
