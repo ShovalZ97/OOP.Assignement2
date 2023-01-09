@@ -54,10 +54,12 @@ In this function ew are deleting all the files that we are creating after we are
 Create 1000 Files :
 
 <img src="[https://user-images.githubusercontent.com/118892976/211306452-7c382fea-66c2-42eb-9334-32cfa059757f.png]" alt="drawing" width="300"/>
+![image](https://user-images.githubusercontent.com/118892976/211307786-74f3bf0e-385f-4159-946f-92697060fe82.png)
 
 Create 10000 Files :
 
 <img src="[https://user-images.githubusercontent.com/118892976/211307518-a7169a29-486f-49da-b109-6de9bae7ca72.png]" alt="drawing" width="300"/>
+![image](https://user-images.githubusercontent.com/118892976/211307750-0c805ce7-f9fd-4bc2-8c93-32ce0fd3f749.png)
 
 
 As we can see, they all counted the same amount of lines, which mean there is no differences between their functionality, as desired. 
