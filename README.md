@@ -51,8 +51,14 @@ In this function ew are deleting all the files that we are creating after we are
 <img src="https://user-images.githubusercontent.com/118892976/211175235-b3aa66cd-8c08-4127-bb9b-84f8a060106f.png" alt="drawing" width="500"/> 
 
 ### Running times of methods 2,3,4 
+Create 1000 Files :
 
-<img src="https://user-images.githubusercontent.com/118892976/211204988-6c769938-3713-40b2-8df2-4d165cabda57.png" alt="drawing" width="300"/>
+<img src="[https://user-images.githubusercontent.com/118892976/211306452-7c382fea-66c2-42eb-9334-32cfa059757f.png]" alt="drawing" width="300"/>
+
+Create 10000 Files :
+
+<img src="[https://user-images.githubusercontent.com/118892976/211306963-2b7d8eec-7017-46f9-ab17-5392a44a12f8.png]" alt="drawing" width="300"/>
+
 
 As we can see, they all counted the same amount of lines, which mean there is no differences between their functionality, as desired. 
 * The method without thread took total time of . 
