@@ -85,9 +85,13 @@ Priority to a specific Thread in the Executor's Threads collection.
 In this part we created a new type that represents an asynchronous task with priority and a new ThreadPool type that supports tasks with
 priority.
  
-### We using two classes to do this: 
+### We are create two classes and use one class to do this: 
+ 
+ ### TaskType Class - the class that we use
+We have a class called TaskType,he is enum that describes the type of task (computational/access to O/I/unknown) and its priority based on the value
+The number of the task type.
 
-### Task Class
+### Task Class - the first class we create 
 Represents an operation that can be run asynchronously and can return a value of some type (that is, will be defined). as a type
 return generic (. It is not necessary for the operation to succeed and in case of failure, an exception will be thrown (E)
 
@@ -109,28 +113,30 @@ We do overrider to compareTo method because we changed the method to compare the
 
   - The hashCode() method in Java is used to compute hash values of Java objects and to do run time of O(1).
  
-### CustomExecutor Class
-_CustomExecutor_ is a type of _ThreadPool_ that executes instances of _Task_ according to it's priority preferences. 
-Concise explanation of some of class methods/fields. 
-* _ThreadPoolExecutor_- An executor mechanism that uses a pool of threads to execute calls asynchronicously . 
-* _PriorityBlockingQueue_ - An unbounded blocking queue that uses the same ordering rules as class _PriorityQueue_ and supplies blocking retrieval operations[^4]. 
-It's _Comparator_ will be used to order our _Tasks_ by priority. 
-* _submit()_- Submits either an asynchronic task or a _TaskType_ with an asynchronic task or a built-in _Task_ to the _PrioityBlockingQueue_ and returns a _Future_ representing the pending result[^3] after it's execution. 
-* _maxPrio_ - Holds the value of the highest rated _Task_ that has been submitted to the queue. It is being updated in each call for _submit()_. 
-* _gracefullyTerminate()_ - Activation will block insertion of new _Task_s to the queue, executing the remaining _Task_s and finishing all the _Task_s that are currently in the threads of the class. 
+### CustomExecutor Class - the second class we create 
+Represents a new type of ThreadPool that supports a queue of priority tasks, all a task in the queue is of TaskType.
+ CustomExecutor will create a Task before putting it in the queue by passing <V> Callable and enum of type TaskType .CustomExecutor will execute the tasks according to their priority.
+ 
+- The constructor of class CustomExecutor : 
+ *corePoolSize - represent the minimum number of threads in the collection of threads in CustomExecutor will be half the number of processors
+which are available for the benefit of the Java Virtual Machine
+ *maxPoolSize - represent the maximum number of threads in the collection of threads in CustomExecutor will be the number of available processors
+ less 1 of the Java Virtual Machine in favor.
+ *maxPriority- the maximum of priority of all the tasks
+ 
+ We have 3 methods of submit :
+ - Submit method that get parameter from type Task - a method for submitting task instances to a priority task queue and return variable a RunnableFuture<T> that has been executed
+  - Submit method that get 2 parameters of Callable and TaskType , in this function we use in our first method of submit that get 1 parameter of type Task.
+ A method whose purpose is to submit to the queue an operation that can be performed asynchronously.
+ - Submit method that get parameter of Callable , in this function we use in our first method of submit that get 1 parameter of type Task.
+ A method whose purpose is to submit to a queue an operation that can be performed asynchronously without a TaskType as a parameter
+
+ - The gracefullyTerminate method -
+  A method that check if all tasks is done,not allow entry of additional tasks to the queue and Completing all remaining tasks in the queue.
+  In this function we used the shutdown method that allow previously submitted tasks to execute before terminating,we used the isTerminated method of      ThreadPoolExecutor class returns true if all the tasks have been completed following shut down.
+  And we used isTerminated() method of ExecutorService in Java is used to wait for all the tasks submitted to the service to complete execution
+ 
 
 ### Class diagram
  
 <img src="https://user-images.githubusercontent.com/118892976/211532284-710cc6fa-77c2-4fea-99f0-3b9835ed1b8f.png" alt="drawing" width="500"/>
-
-[^1]: Assignment 2 Part 2/Built-in-limitations 
-[^2]: Priority range is 1-10, therefore 1 is the highest priority, and respectively 10 is the lowest one.
-[^3]: JavaDoc/ConcurrentAbstractExecutorService/submit() 
-[^4]: Oracle site 
- 
-
-
-
-
-
- 
