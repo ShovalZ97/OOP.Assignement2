@@ -1,6 +1,6 @@
 # OOP.Assignement2
 
-## Part one  
+## Part one Ex2_1
 
 In this assignment, you create several text files calculate the number of lines in these files. We will use three methods:
 • Normal method without the use of threads,
@@ -71,6 +71,62 @@ We can notice that the calculation with threadPool is almost always faster than 
 There are two reasons why using a threadPool can be faster than using threads:
 The first one, is that we can use the same thread for multiple tasks instead of creating a completely new thread.
 And the second one, is that we use submit() method that accepts a Callable instead of Runnable, so we can get the return value faster with get() 
+
+## Part two Ex2_2 
+In Java, there is no built-in option to give priority to an asynchronous task (a task that will be executed in a separate thread).
+The language does allow you to set a priority for the Thread that runs the task, but not for the task itself.
+Therefore, we are in a problem when we want to prioritize an asynchronous task using:
+1. Interface <V> can be called in an interface that represents a task with a generic return value.
+A task that is of type <V> Callable cannot be executed by a normal thread, cannot be assigned to it
+indirectly preferred.
+2. B-ThreadPool which is placed according to its tasks can be activated or <V<Callable, since it is not possible to determine
+Priority to a specific Thread in the Executor's Threads collection.
+
+In this part we created a new type that represents an asynchronous task with priority and a new ThreadPool type that supports tasks with
+priority.
+ 
+### We using two classes to do this: 
+
+### Task Class
+Represents an operation that can be run asynchronously and can return a value of some type (that is, will be defined). as a type
+return generic (. It is not necessary for the operation to succeed and in case of failure, an exception will be thrown (E)
+
+Extends FutureTask<E> because ecause in the CustomExecutor class
+We make an exeute that receives a variable of type Runnable Future.
+Implenents Callable<E> - A task that returns a result and may throw an exception.
+And Comparable<Task<E>> - To compare between the priority task(The priorityblockingquque class
+make the comparison according to the compareTo function that found in the Task class.
+We do overrider to compareTo method because we changed the method to compare the priority values and not to compare the addresses in memory.
+
+- There are 2 constructors, the first get 1 parameter of Callable,the second get 2 parametrs of Callable and TaskType.
+ We use the superclass constructor that can be called from the first line of a subclass constructor by using the special keyword super() and passing appropriate parameters.
+ 
+ - We have the function call because we implements from Callable class.
+  The call() method is called in order to execute the asynchronous task,the method can return a result.
+  If the task is executed asynchronously,the result is typically propagated back to the creator of the task via a Java Future.
+
+ - We have 2 factorial methods that creates a Task with a default priority,the first method get 1 parameter of Callable,the second get 2 parametrs of Callable and    TaskType. 
+
+  - The hashCode() method in Java is used to compute hash values of Java objects and to do run time of O(1).
+ 
+### CustomExecutor Class
+_CustomExecutor_ is a type of _ThreadPool_ that executes instances of _Task_ according to it's priority preferences. 
+Concise explanation of some of class methods/fields. 
+* _ThreadPoolExecutor_- An executor mechanism that uses a pool of threads to execute calls asynchronicously . 
+* _PriorityBlockingQueue_ - An unbounded blocking queue that uses the same ordering rules as class _PriorityQueue_ and supplies blocking retrieval operations[^4]. 
+It's _Comparator_ will be used to order our _Tasks_ by priority. 
+* _submit()_- Submits either an asynchronic task or a _TaskType_ with an asynchronic task or a built-in _Task_ to the _PrioityBlockingQueue_ and returns a _Future_ representing the pending result[^3] after it's execution. 
+* _maxPrio_ - Holds the value of the highest rated _Task_ that has been submitted to the queue. It is being updated in each call for _submit()_. 
+* _gracefullyTerminate()_ - Activation will block insertion of new _Task_s to the queue, executing the remaining _Task_s and finishing all the _Task_s that are currently in the threads of the class. 
+
+### Class diagram
+ 
+<img src="https://user-images.githubusercontent.com/118892976/211532284-710cc6fa-77c2-4fea-99f0-3b9835ed1b8f.png" alt="drawing" width="500"/>
+
+[^1]: Assignment 2 Part 2/Built-in-limitations 
+[^2]: Priority range is 1-10, therefore 1 is the highest priority, and respectively 10 is the lowest one.
+[^3]: JavaDoc/ConcurrentAbstractExecutorService/submit() 
+[^4]: Oracle site 
  
 
 
