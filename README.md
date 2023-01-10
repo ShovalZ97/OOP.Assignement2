@@ -136,7 +136,7 @@ which are available for the benefit of the Java Virtual Machine
   In this function we used the shutdown method that allow previously submitted tasks to execute before terminating,we used the isTerminated method of      ThreadPoolExecutor class returns true if all the tasks have been completed following shut down.
   And we used isTerminated() method of ExecutorService in Java is used to wait for all the tasks submitted to the service to complete execution
  
-### Tests Class
+### Tests Class - check if we have implemented what is required.
  
 ### Class diagram
  
